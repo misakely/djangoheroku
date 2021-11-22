@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 
 from pathlib import Path
 import os
+import django_heroku
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -30,7 +31,7 @@ if os.environ.get('ENV') == 'PRODUCTION':
 else:
     DEBUG = True
 
-ALLOWED_HOSTS = ['djangoherokullmann.heroku.com']
+ALLOWED_HOSTS = ['djangoherokullmann.herokuapp.com']
 
 
 # Application definition
@@ -144,3 +145,5 @@ if os.environ.get('ENV') == 'PRODUCTION':
     # Simplified static file serving.
        # https://warehouse.python.org/project/whitenoise/
     STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+
+    django_heroku.settings(locals())
